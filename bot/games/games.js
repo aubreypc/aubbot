@@ -242,7 +242,7 @@ class Trivia {
 				});*/
 
 			//timeout for showing hint
-			setTimeout((_) => this.state.question == body.question ? this.hint() : null, 15000);
+			setTimeout((_) => (this.state.question == body.question && this.state.answerable) ? this.hint() : null, 15000);
 
 			//timeout for moving on to next question
 			this.state.timeout = setTimeout((_) => (this.state.question == body.question) ? this.reveal() : null, 30000);
