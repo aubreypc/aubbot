@@ -200,7 +200,7 @@ class Trivia {
 
 	nextQuestion() {
 		request('http://jservice.io/api/random', {json: true}, (err, res, body) => {
-			if (err) {console.log("something went wrong", body); return this.nextQuestion()}
+			if (err || !body[0].question || !body[0].answer) {console.log("something went wrong", body); return this.nextQuestion()}
 			if (body[0].question.includes("seen here")) {this.nextQuestion(); return;} // filter out picture questions
 			body = body[0];
 
